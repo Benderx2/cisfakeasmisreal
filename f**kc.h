@@ -76,7 +76,8 @@ typedef unsigned int u0;
 #define stosw (*(uint16_t*)(&r0) = r1)
 #define stosd (*(uint32_t*)(&r0) = r1)
 #define stosq (*(uint64_t*)(&r0) = r1)
-#define call(x) ((void)(*func(void))(x)()
+#define PTR(x) &x
+#define call(x) ((s0)(*func(void))(x)()
 #define ret return
 #define retn(x) return x
 #define proc(x, y) y x(void){
@@ -91,6 +92,8 @@ void syscall(int x){
 		case 0:
 			putc(r1, stdout);
 			break;
+		case 1:
+			r1 = getc(stdin);
 		default:
 			break;
 	}
