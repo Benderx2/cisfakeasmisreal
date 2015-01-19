@@ -1,5 +1,5 @@
 #include "f**kc.h"
-char* y = "Hello, World!\n";
+u8* y = "Hello, World!\n";
 proc(myputs)
 	_loop:
 		lodsb;
