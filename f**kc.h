@@ -14,6 +14,8 @@ typedef int64_t s64;
 typedef int s0;
 typedef unsigned int u0;
 typedef void empty;
+s0 asm_main(empty);
+s0 (*_______________________func)(empty);
 #define mov(x, y) (x=y)
 #define push(x)\
         stack[sp] = x;\
@@ -77,11 +79,24 @@ typedef void empty;
 #define stosw (*(uint16_t*)(&r0) = r1)
 #define stosd (*(uint32_t*)(&r0) = r1)
 #define stosq (*(uint64_t*)(&r0) = r1)
-#define PTR(x) &x
-#define call(x) ((s0)(*func(void))(x)()
+#define PTR(x) (uintptr_t)&x
+#define call(x)\
+		_______________________func = &x;\
+		_______________________func();
 #define ret return
 #define retn(x) return x
-#define proc(x, y) y x(void){
+#define add(x, y) (x = x+y)
+#define sub(x, y) (x = x-y)
+#define div(x, y)\
+			x = x / y;\
+			r1 = x % y;
+#define mul(x, y) (x = x*y)
+#define xor(x, y) (x = x^y)
+#define or(x, y) (x = x|y)
+#define and(x, y) (x = x & y)
+#define not(x) (x=!x)
+#define neg(x) (x=~x)
+#define proc(x) s0 x (empty); s0 x(empty){
 #define endproc }
 bool sete, setl, setg, setz;
 uint64_t r1, r2, r3, r4, r5, r6, r7, r8, r8, r10, r11, r12, r13, r14, r15;
@@ -98,5 +113,9 @@ void syscall(int x){
 		default:
 			break;
 	}
+}
+int main(void){
+	asm_main();
+	return 0;
 }
 #endif
