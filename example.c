@@ -1,17 +1,19 @@
 #include "f**kc.h"
-proc(lol)
-	mov(r1, 'A');
-	cmp(r1, 'A');
-	je(do_shit);
-	mov(r1, 'C');
-do_shit:
-	syscall(0);
-	ret;
+char* y = "Hello, World!\n";
+proc(myputs)
+	_loop:
+		lodsb;
+		cmp(r1, 0);
+		je(_end_loop);
+		syscall(0);
+		inc(r0);
+		jmp(_loop);
+	_end_loop:
+		ret;
 endproc
 // AWW YEAH. BEAT DAT C NOOBZ
 proc(asm_main)
-	u8 y;
-	mov(r2, PTR(y));
-	call(lol);
+	mov(r0, PTR(y));
+	call(myputs);
 	retn(0);
 endproc

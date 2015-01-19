@@ -23,6 +23,8 @@ s0 (*_______________________func)(empty);
 #define pop(x)\
         x = stack[sp+1];\
         sp++;
+#define jmp(x)\
+			goto x;
 #define je(x)\
         if(sete == true) {\
                 goto x;\
@@ -71,15 +73,17 @@ s0 (*_______________________func)(empty);
                 {\
                         setz = true;\
                 }
-#define lodsb (r1 = *(uint8_t*)(&r0))
-#define lodsw (r1 = *(uint16_t*)(&r0))
-#define lodsd (r1 = *(uint32_t*)(&r0))
-#define lodsq (r1 = *(uint64_t*)(&r0))
-#define stosb (*(uint8_t*)(&r0) = r1)
-#define stosw (*(uint16_t*)(&r0) = r1)
-#define stosd (*(uint32_t*)(&r0) = r1)
-#define stosq (*(uint64_t*)(&r0) = r1)
-#define PTR(x) (uintptr_t)&x
+#define lodsb (r1 = *((uint8_t*)(r0)))
+#define lodsw (r1 = *(uint16_t*)(r0))
+#define lodsd (r1 = *(uint32_t*)(r0))
+#define lodsq (r1 = *(uint64_t*)(r0))
+#define stosb (*(uint8_t*)(r0) = r1)
+#define stosw (*(uint16_t*)(r0) = r1)
+#define stosd (*(uint32_t*)(r0) = r1)
+#define stosq (*(uint64_t*)(r0) = r1)
+#define inc(x) (x++)
+#define dec(x) (x--)
+#define PTR(x) (uintptr_t)x
 #define call(x)\
 		_______________________func = &x;\
 		_______________________func();
@@ -99,7 +103,7 @@ s0 (*_______________________func)(empty);
 #define proc(x) s0 x (empty); s0 x(empty){
 #define endproc }
 bool sete, setl, setg, setz;
-uint64_t r1, r2, r3, r4, r5, r6, r7, r8, r8, r10, r11, r12, r13, r14, r15;
+uint64_t r0, r1, r2, r3, r4, r5, r6, r7, r8, r8, r10, r11, r12, r13, r14, r15;
 uint64_t sp;
 uint64_t stack[1500];
 void syscall(int x);
