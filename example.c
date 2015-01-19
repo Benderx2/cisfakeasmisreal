@@ -6,7 +6,7 @@ proc(main, s0)
 	call(lol);
 	retn(0);
 endproc
-proc(lol, void)
+proc(lol, empty)
 	mov(r1, 'A');
 	cmp(r1, 'A');
 	je(do_shit);

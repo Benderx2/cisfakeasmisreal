@@ -13,6 +13,7 @@ typedef int32_t s32;
 typedef int64_t s64;
 typedef int s0;
 typedef unsigned int u0;
+typedef void empty;
 #define mov(x, y) (x=y)
 #define push(x)\
         stack[sp] = x;\
@@ -85,7 +86,7 @@ typedef unsigned int u0;
 bool sete, setl, setg, setz;
 uint64_t r1, r2, r3, r4, r5, r6, r7, r8, r8, r10, r11, r12, r13, r14, r15;
 uint64_t sp;
-uint64_t stack[500];
+uint64_t stack[1500];
 void syscall(int x);
 void syscall(int x){
 	switch(x){
