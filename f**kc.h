@@ -119,6 +119,7 @@ void syscall(int x){
 	}
 }
 int main(void){
+	sp = 1500;
 	asm_main();
 	return 0;
 }
