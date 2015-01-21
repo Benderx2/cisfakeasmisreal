@@ -15,5 +15,5 @@ endproc
 proc(asm_main)
 	mov(r0, PTR(y));
 	call(myputs);
-	retn(0);
+	ret;
 endproc

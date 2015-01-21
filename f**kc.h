@@ -14,8 +14,8 @@ typedef int64_t s64;
 typedef int s0;
 typedef unsigned int u0;
 typedef void empty;
-s0 asm_main(empty);
-s0 (*_______________________func)(empty);
+empty asm_main(empty);
+empty (*_______________________func)(empty);
 #define mov(x, y) (x=y)
 #define push(x)\
         stack[sp] = x;\
@@ -88,7 +88,6 @@ s0 (*_______________________func)(empty);
 		_______________________func = &x;\
 		_______________________func();
 #define ret return
-#define retn(x) return x
 #define add(x, y) (x = x+y)
 #define sub(x, y) (x = x-y)
 #define div(x, y)\
@@ -100,11 +99,12 @@ s0 (*_______________________func)(empty);
 #define and(x, y) (x = x & y)
 #define not(x) (x=!x)
 #define neg(x) (x=~x)
-#define proc(x) s0 x (empty); s0 x(empty){
+#define proc(x) empty x (empty); empty x(empty){
 #define endproc }
 bool sete, setl, setg, setz;
 uint64_t r0, r1, r2, r3, r4, r5, r6, r7, r8, r8, r10, r11, r12, r13, r14, r15;
 uint64_t sp;
+//! Sorry m8's, really real programmers need only 1500 64-bit stack space!
 uint64_t stack[1500];
 void syscall(int x);
 void syscall(int x){
